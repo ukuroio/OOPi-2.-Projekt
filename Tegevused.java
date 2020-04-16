@@ -1,17 +1,12 @@
 package projekt;
+
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-
-import java.io.IOException;
 
 public class Tegevused extends Application{
     public static void main(String[] args) {
@@ -83,37 +78,47 @@ public class Tegevused extends Application{
         nupp.setOnAction(e ->
         {
             try {
-                int arv = Integer.parseInt(tf.getCharacters().toString());
-                if (onAlgarv(arv)) {
+                int moodul = Integer.parseInt(tf.getCharacters().toString());
+                if (onAlgarv(moodul)) {
                     lab5.setVisible(false);
                     if (raadio1.isSelected()) {
-
-                    } else if (raadio2.isSelected()) {
-
-                    } else if (raadio2.isSelected()) {
-
-                    } else if (raadio3.isSelected()) {
-
-                    } else if (raadio4.isSelected()) {
-
-                    } else if (raadio5.isSelected()) {
-
-                    } else if (raadio6.isSelected()) {
-
-                    } else if (raadio7.isSelected()) {
-
-                    } else if (raadio8.isSelected()) {
-
-                    } else if (raadio9.isSelected()) {
-
-                    } else if (raadio10.isSelected()) {
-
-                    } else if (raadio11.isSelected()) {
-
-                    } else if (raadio12.isSelected()) {
-
-                    } else if (raadio13.isSelected()) {
-
+                        TeineAken.display(moodul,1);
+                    }
+                    else if (raadio2.isSelected()) {
+                        TeineAken.display(moodul,2);
+                    }
+                    else if (raadio3.isSelected()) {
+                        TeineAken.display(moodul,3);
+                    }
+                    else if (raadio4.isSelected()) {
+                        TeineAken.display(moodul,4);
+                    }
+                    else if (raadio5.isSelected()) {
+                        TeineAken.display(moodul,5);
+                    }
+                    else if (raadio6.isSelected()) {
+                        TeineAken.display(moodul,6);
+                    }
+                    else if(raadio7.isSelected()) {
+                        TeineAken.display(moodul,7);
+                    }
+                    else if (raadio8.isSelected()) {
+                        TeineAken.display(moodul,8);
+                    }
+                    else if (raadio9.isSelected()) {
+                        TeineAken.display(moodul,9);
+                    }
+                    else if (raadio10.isSelected()) {
+                        TeineAken.display(moodul,10);
+                    }
+                    else if (raadio11.isSelected()) {
+                        TeineAken.display(moodul,11);
+                    }
+                    else if (raadio12.isSelected()) {
+                        TeineAken.display(moodul,12);
+                    }
+                    else if (raadio13.isSelected()) {
+                        TeineAken.display(moodul,13);
                     }
                 }else{
                     lab5.setText("Moodul peab olema algarv!");
@@ -132,6 +137,8 @@ public class Tegevused extends Application{
         juur.setRight(vbox2);
         juur.setCenter(vbox3);
         Scene stseen1 = new Scene(juur, 475, 300, Color.SNOW);
+        peaLava.setMinHeight(250);
+        peaLava.setMinWidth(400);
         peaLava.setTitle("Tegevused");
         peaLava.setScene(stseen1);
         peaLava.show();
