@@ -1,4 +1,4 @@
-package projekt;
+package oop;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -52,9 +52,9 @@ public class Tegevused extends Application{
         RadioButton raadio8= new RadioButton("2. Lahuta");
         RadioButton raadio9= new RadioButton("3. Korruta");
         RadioButton raadio10= new RadioButton("4. Jaga");
-        RadioButton raadio11= new RadioButton("5. Astenda");
+        RadioButton raadio11= new RadioButton("5. VÜK");
         RadioButton raadio12= new RadioButton("6. SÜT");
-        RadioButton raadio13= new RadioButton("7. VÜK");
+        RadioButton raadio13= new RadioButton("7. Astenda");
 
 
         ToggleGroup küsimus= new ToggleGroup();
