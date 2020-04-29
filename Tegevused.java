@@ -1,12 +1,20 @@
 package oop;
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class Tegevused extends Application{
     public static void main(String[] args) {
@@ -25,7 +33,7 @@ public class Tegevused extends Application{
         return true;
     }
 
-    public void start(Stage peaLava) {
+    public void start(Stage peaLava){
         BorderPane juur = new BorderPane();
         VBox vbox1 = new VBox(5);
         VBox vbox2 = new VBox(5);
@@ -74,6 +82,25 @@ public class Tegevused extends Application{
 
 
         Button nupp = new Button("Esita");
+
+        Button nupp1 = new Button("Sulge");
+
+        nupp1.setOnKeyPressed(keyEvent -> {
+            if (keyEvent.getCode() == KeyCode.ENTER) {
+                    try (BufferedReader br = new BufferedReader(new FileReader("logi.txt"))) {
+                        String rida = br.readLine();
+                        while(rida!=null){
+                            System.out.println(rida);
+                            rida=br.readLine();
+                        }
+
+                    } catch (IOException e) {
+
+                    }
+
+                peaLava.close();
+            }
+        });
 
         nupp.setOnAction(e ->
         {
@@ -132,7 +159,7 @@ public class Tegevused extends Application{
 
         vbox1.getChildren().addAll(lab2, raadio1, raadio2, raadio3, raadio4, raadio5, raadio6);
         vbox2.getChildren().addAll(lab3, raadio7, raadio8, raadio9, raadio10, raadio11, raadio12, raadio13);
-        vbox3.getChildren().addAll(lab1, lab4, tf, nupp, lab5);
+        vbox3.getChildren().addAll(lab1, lab4, tf, nupp,nupp1, lab5);
         juur.setLeft(vbox1);
         juur.setRight(vbox2);
         juur.setCenter(vbox3);

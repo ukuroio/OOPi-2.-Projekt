@@ -8,9 +8,23 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
 public class TeineAken {
+
+    
+    static void kirjutaFaili(String failinimi, String tulemus, String tehe) throws IOException {
+        try(BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(failinimi, true), StandardCharsets.UTF_8))){
+            bw.write(tehe);
+            bw.write(",");
+            bw.write("Tulemus: ");
+            bw.write(tulemus);
+            bw.write("\n");
+        }
+    }
+
 
     public static void display(int moodul, int tehte_arv) {
         Stage window = new Stage();
@@ -58,19 +72,23 @@ public class TeineAken {
                     int arv2 = Integer.parseInt(tf2.getText());
                     if (tehte_arv == 1) {
                         int tulemus = zn.liitmine(arv1, arv2);
+                        kirjutaFaili("logi.txt", Integer.toString(tulemus), "Liitmine jäägiklassis Z"+ moodul);
                         lab2.setText(Integer.toString(tulemus));
                         lab2.setVisible(true);
                     } else if (tehte_arv == 2) {
                         int tulemus = zn.lahutamine(arv1, arv2);
+                        kirjutaFaili("logi.txt", Integer.toString(tulemus), "Lahutamine jäägiklassis Z"+ moodul);
                         lab2.setText(Integer.toString(tulemus));
                         lab2.setVisible(true);
                     } else if (tehte_arv == 3) {
                         int tulemus = zn.korrutamine(arv1, arv2);
+                        kirjutaFaili("logi.txt", Integer.toString(tulemus), "Korrutamine jäägiklassis Z"+ moodul);
                         lab2.setText(Integer.toString(tulemus));
                         lab2.setVisible(true);
                     } else if (tehte_arv == 4) {
                         try {
                             int tulemus = zn.jagamine(arv1, arv2);
+                            kirjutaFaili("logi.txt", Integer.toString(tulemus), "Jagamine jäägiklassis Z" +moodul);
                             lab2.setText(Integer.toString(tulemus));
                             lab2.setVisible(true);
                         } catch (ArithmeticException e2) {
@@ -80,6 +98,7 @@ public class TeineAken {
                     } else {
                         try {
                             int tulemus = zn.astendamine(arv1, arv2);
+                            kirjutaFaili("logi.txt", Integer.toString(tulemus), " Astendamine jäägiklassis Z" + moodul);
                             lab2.setText(Integer.toString(tulemus));
                             lab2.setVisible(true);
                         } catch (ArithmeticException e2) {
@@ -87,7 +106,7 @@ public class TeineAken {
                             lab2.setVisible(true);
                         }
                     }
-                } catch (NumberFormatException e1) {
+                } catch (NumberFormatException | IOException e1) {
                     lab2.setText("Sisestage täisarvud!");
                     lab2.setVisible(true);
                 }
@@ -110,13 +129,14 @@ public class TeineAken {
                     int arv = Integer.parseInt(tf1.getText());
                     try {
                         int tulemus = zn.pöördarv(arv);
+                        kirjutaFaili("logi.txt", Integer.toString(tulemus), "Astendamine jäägiklassis Z"+ moodul);
                         lab2.setText(Integer.toString(tulemus));
                         lab2.setVisible(true);
                     } catch (ArithmeticException e2) {
                         lab2.setText("Nullil pole pöördelementi!");
                         lab2.setVisible(true);
                     }
-                } catch (NumberFormatException e1) {
+                } catch (NumberFormatException | IOException e1) {
                     lab2.setText("Sisestage täisarv!");
                     lab2.setVisible(true);
                 }
@@ -181,19 +201,23 @@ public class TeineAken {
                     p.eemaldaNullid(polüB);
                     if (tehte_arv == 7) {
                         int[] tulemus = p.liida(polüA, polüB);
+                        kirjutaFaili("logi.txt", Arrays.toString(tulemus), "Polü liitmine Z"  + moodul);
                         lab2.setText(Arrays.toString(tulemus));
                         lab2.setVisible(true);
                     } else if (tehte_arv == 8) {
                         int[] tulemus = p.lahuta(polüA, polüB);
+                        kirjutaFaili("logi.txt", Arrays.toString(tulemus), "Polü lahutamine Z" + moodul);
                         lab2.setText(Arrays.toString(tulemus));
                         lab2.setVisible(true);
                     } else if (tehte_arv == 9) {
                         int[] tulemus = p.korruta(polüA, polüB);
+                        kirjutaFaili("logi.txt", Arrays.toString(tulemus), "Polü korrutamine Z" + moodul);
                         lab2.setText(Arrays.toString(tulemus));
                         lab2.setVisible(true);
                     } else if (tehte_arv == 10) {
                         try {
                             int[][] tulemus = p.jaga(polüA, polüB);
+                            kirjutaFaili("logi.txt", Arrays.deepToString(tulemus), "Polü jagamine Z" + moodul);
                             lab2.setText(Arrays.deepToString(tulemus));
                             lab2.setVisible(true);
                         } catch (ArithmeticException e2) {
@@ -202,14 +226,16 @@ public class TeineAken {
                         }
                     } else if (tehte_arv == 11) {
                         int[] tulemus = p.VÜK(polüA, polüB);
+                        kirjutaFaili("logi.txt", Arrays.toString(tulemus), "Polü VÜK Z" + moodul);
                         lab2.setText(Arrays.toString(tulemus));
                         lab2.setVisible(true);
                     } else {
                         int[] tulemus = p.SÜT(polüA, polüB);
+                        kirjutaFaili("logi.txt", Arrays.toString(tulemus), "Polü SÜT Z" + moodul);
                         lab2.setText(Arrays.toString(tulemus));
                         lab2.setVisible(true);
                     }
-                } catch (NumberFormatException e1) {
+                } catch (NumberFormatException | IOException e1) {
                     lab2.setText("Sisestage täisarvuline polünoom!");
                     lab2.setVisible(true);
                 }
@@ -239,6 +265,7 @@ public class TeineAken {
                     p.eemaldaNullid(polüA);
                     try {
                         int[] tulemus = p.astendaPolünoom(polüA, astendaja);
+                        kirjutaFaili("logi.txt", Arrays.toString(tulemus), "Polü astendamine Z" + moodul);
                         lab2.setText(Arrays.toString(tulemus));
                         lab2.setVisible(true);
                     } catch (ArithmeticException e2) {
@@ -246,8 +273,8 @@ public class TeineAken {
                                 "positiivne!");
                         lab2.setVisible(true);
                     }
-                } catch (NumberFormatException e1) {
-                    lab2.setText("Sisestage täisarvuline polünoom!");
+                } catch (NumberFormatException | IOException e1) {
+                    lab2.setText("Sisestage täisarvuline polünoom ja astendaja peab olema mittenegatiivne");
                     lab2.setVisible(true);
                 }
             });
@@ -258,5 +285,6 @@ public class TeineAken {
         window.setScene(newScene);
         window.showAndWait();
     }
+
 }
 
