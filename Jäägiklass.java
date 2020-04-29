@@ -43,7 +43,7 @@ public class Jäägiklass {
                 }
             } else {
                 for (int i = 0; i < -b; i++) {
-                    muutuja = korrutamine(muutuja, korrutamine(-1, a));
+                    muutuja = korrutamine(muutuja, pöördarv(a));
                 }
             }
         }
