@@ -1,4 +1,4 @@
-package oop;
+package projekt;
 import java.util.Arrays;
 
 public class Polünoomid {

@@ -1,4 +1,4 @@
-package oop;
+package projekt;
 
 import java.util.ArrayList;
 import java.util.Arrays;

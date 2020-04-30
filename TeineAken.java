@@ -1,4 +1,4 @@
-package oop;
+package projekt;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Button;

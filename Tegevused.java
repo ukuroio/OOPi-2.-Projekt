@@ -1,4 +1,4 @@
-package oop;
+package projekt;
 
 import javafx.application.Application;
 import javafx.geometry.Pos;
@@ -86,6 +86,11 @@ public class Tegevused extends Application{
 
         //Enteri vajutamisel sulgub aken, kui vajutada enteriga sulge nupule
         // ja logifaili sisu prinditakse konsooli, failist lugemine
+        nupp1.setOnAction(e -> {
+            lab5.setText("Väljumiseks vajutage ENTER!");
+            lab5.setVisible(true);
+        });
+
         nupp1.setOnKeyPressed(keyEvent -> {
             if (keyEvent.getCode() == KeyCode.ENTER) {
                     try (BufferedReader br = new BufferedReader(new FileReader("logi.txt"))) {
@@ -94,48 +99,10 @@ public class Tegevused extends Application{
                             System.out.println(rida);
                             rida=br.readLine();
                         }
-
-                    } catch (IOException ignored) {
-
-                    }
-
+                    } catch (IOException ignored) {}
                 peaLava.close();
             }
         });
-
-        //Aknasündmus, mis ilmub, kui peaaken sulgetakse
-        peaLava.setOnHiding(event -> {
-
-            Stage kinnitus = new Stage();
-
-            Label kusimus = new Label("Kas oled kindel, et soovid sulgeda?");
-
-            Button nupp3 = new Button("Jah");
-            Button nupp4 = new Button("Ei");
-
-
-            nupp3.setOnAction(event12 -> kinnitus.hide());
-
-            nupp4.setOnAction(event1 -> {
-                peaLava.show();
-                kinnitus.hide();
-            });
-
-            FlowPane pane = new FlowPane(10, 10);
-            pane.setAlignment(Pos.CENTER);
-            pane.getChildren().addAll(nupp3, nupp4);
-
-            VBox vBox = new VBox(10);
-            vBox.setAlignment(Pos.CENTER);
-            vBox.getChildren().addAll(kusimus, pane);
-
-            Scene stseen2 = new Scene(vBox);
-            kinnitus.setTitle("Sulgemisaken");
-            kinnitus.setScene(stseen2);
-            kinnitus.show();
-
-        });
-
 
         nupp.setOnAction(e ->
         {
