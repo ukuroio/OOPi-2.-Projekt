@@ -14,7 +14,7 @@ import java.util.Arrays;
 
 public class TeineAken {
 
-    
+    //Logifaili kirjutamine
     static void kirjutaFaili(String failinimi, String tulemus, String tehe) throws IOException {
         try(BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(failinimi, true), StandardCharsets.UTF_8))){
             bw.write(tehe);

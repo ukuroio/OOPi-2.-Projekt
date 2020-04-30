@@ -93,7 +93,7 @@ public class Jäägiklass {
         tsükkel = tsükkel1;
         return tsükkel1;
     }
-
+    //
     public int pöördarv(int a) throws ArithmeticException{ //leiab antud jäägiklassi pöördelemendi
         if(taandamine(a) == 0){
             throw new ArithmeticException("Taandamise tulemus on 0");

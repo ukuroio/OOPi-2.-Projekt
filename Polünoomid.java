@@ -235,7 +235,7 @@ public class Polünoomid {
             return korruta(pöördarv, väiksem);
         }
 
-        // Poünoom, mida kasutan Eukleidese algoritmi rakendamiseks
+        // Polünoom, mida kasutan Eukleidese algoritmi rakendamiseks
         int[] r = new int[pikkus2];
 
         //Eukleidese algoritm
